@@ -26,7 +26,7 @@ import pandas as pd
 df=pd.read_csv("/content/SAMPLEIDS.csv")
 df
 
-![image](https://github.com/user-attachments/assets/8072c16b-7745-43ce-bb82-38d877518778)
+  ![image](https://github.com/user-attachments/assets/8072c16b-7745-43ce-bb82-38d877518778)
 
 df.shape
 
