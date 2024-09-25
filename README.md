@@ -1,231 +1,112 @@
-# Exno:1
-Data Cleaning Process
+# EXNO2DS
+# AIM:
+      To perform Exploratory Data Analysis on the given data set.
+      
+# EXPLANATION:
+  The primary aim with exploratory analysis is to examine the data for distribution, outliers and anomalies to direct specific testing of your hypothesis.
+  
+# ALGORITHM:
+STEP 1: Import the required packages to perform Data Cleansing,Removing Outliers and Exploratory Data Analysis.
 
-# AIM
-To read the given data and perform data cleaning and save the cleaned data to a file.
+STEP 2: Replace the null value using any one of the method from mode,median and mean based on the dataset available.
 
-# Explanation
-Data cleaning is the process of preparing data for analysis by removing or modifying data that is incorrect ,incompleted , irrelevant , duplicated or improperly formatted. Data cleaning is not simply about erasing data ,but rather finding a way to maximize datasets accuracy without necessarily deleting the information.
+STEP 3: Use boxplot method to analyze the outliers of the given dataset.
 
-# Algorithm
-STEP 1: Read the given Data
+STEP 4: Remove the outliers using Inter Quantile Range method.
 
-STEP 2: Get the information about the data
+STEP 5: Use Countplot method to analyze in a graphical method for categorical data.
 
-STEP 3: Remove the null values from the data
+STEP 6: Use displot method to represent the univariate distribution of data.
 
-STEP 4: Save the Clean data to the file
+STEP 7: Use cross tabulation method to quantitatively analyze the relationship between multiple variables.
 
-STEP 5: Remove outliers using IQR
+STEP 8: Use heatmap method of representation to show relationships between two variables, one plotted on each axis.
 
-STEP 6: Use zscore of to remove outliers
-
-# Coding and Output
+## CODING AND OUTPUT
 
 import pandas as pd
-
-df=pd.read_csv("/content/SAMPLEIDS.csv")
-
+df = pd.read_csv('/content/titanic_dataset.csv')
 df
 
-  ![image](https://github.com/user-attachments/assets/8072c16b-7745-43ce-bb82-38d877518778)
+![Screenshot 2024-09-03 212845](https://github.com/user-attachments/assets/4ce792a1-8136-4399-a0eb-ad4c9c58f956)
 
-df.shape
+df.dropna(inplace=True)
 
-![image](https://github.com/user-attachments/assets/17c87218-971c-460c-a5d5-d466a2beaf31)
 
-df.describe()
+df.isna().sum()
 
-![image](https://github.com/user-attachments/assets/af28ee11-1e54-4380-b02d-fb5035d841b4)
+![Screenshot 2024-09-03 212948](https://github.com/user-attachments/assets/eb76c493-a690-448f-a7a1-f0b7682d2615)
 
 df.info()
 
-![image](https://github.com/user-attachments/assets/19320d44-f339-44b0-8635-dd4d644e480e)
+![Screenshot 2024-09-03 213928](https://github.com/user-attachments/assets/8304b85f-ffab-40a4-adb2-b58c1f4f4e8a)
 
-df.head(4)
-df.tail(4)
-
-![image](https://github.com/user-attachments/assets/2eb31c8b-a01f-4657-8881-7170c82c97c0)
-
-df.isnull().sum()
-
-![image](https://github.com/user-attachments/assets/d143bc6a-7b35-4180-a96a-9989cef93588)
-
-df.dropna(how='any').shape
 df.shape
 
-![image](https://github.com/user-attachments/assets/a4641760-7c25-46de-8345-91f8fa9b1b36)
+![Screenshot 2024-09-03 215050](https://github.com/user-attachments/assets/31cec260-9d93-4021-9ba9-a11fca070f5c)
 
-x=df.dropna(how='any')
-x
+df.set_index('PassengerId', inplace=True)
+df.describe()
 
-![image](https://github.com/user-attachments/assets/b70c185d-da54-4359-9d5b-8ec75102bcbb)
+![Screenshot 2024-09-03 215147](https://github.com/user-attachments/assets/35bb4428-236a-4147-8684-fde2aa24bf45)
 
-x2=df.dropna(how='all').shape
-mn=df.TOTAL.mean()
-mn
-df.isnull().sum()
-
-![image](https://github.com/user-attachments/assets/b7a63aaa-4fa7-479c-8ad2-3ee03cd5ee72)
-
-df.TOTAL.fillna(mn,inplace=True)
 df
 
-![image](https://github.com/user-attachments/assets/3d05c190-ad74-41af-b689-73aa80bfc20e)
+![Screenshot 2024-09-03 215238](https://github.com/user-attachments/assets/8bee6ffe-935b-4bf7-b7b8-677a3d04f500)
 
-df['M1']
+df.nunique()
 
-![image](https://github.com/user-attachments/assets/15c5410e-0248-4935-934d-2ddac965dcdc)
+![Screenshot 2024-09-03 215324](https://github.com/user-attachments/assets/e271e476-39b5-4d2a-8539-c311dba12aa0)
 
-df['M1'].fillna(method='ffill',inplace=True)
+df["Survived"].value_counts()
 
-![image](https://github.com/user-attachments/assets/1bdb3021-72b7-4c00-9ce6-664c4b97d043)
+![Screenshot 2024-09-03 215400](https://github.com/user-attachments/assets/65da76d6-5fc5-4877-abfe-a8d244cbd1e5)
 
+per=(df["Survived"].value_counts()/df.shape[0]*100).round(2)
+per
 
-df.duplicated()
-
-
-![image](https://github.com/user-attachments/assets/6b28cb41-f497-4be0-ab4c-a0723f224c47)
-
-
-l=df.M1.interpolate()
-l
-
-![image](https://github.com/user-attachments/assets/4070d22f-c08e-47e4-b777-f808318b3813)
-
-df['DOB']
-
-![image](https://github.com/user-attachments/assets/16f712d9-8053-4886-ba7d-23bfdf7f6d7e)
-
-x
-
-![image](https://github.com/user-attachments/assets/78d56365-921f-4026-99d2-bc93f60c1ee3)
+![Screenshot 2024-09-03 215500](https://github.com/user-attachments/assets/6318fbe4-e0c8-4ef7-8e3a-eadb6c11aad3)
 
 import seaborn as sns
-sns.heatmap(df.isnull(),yticklabels=False,annot=True)
+sns.countplot(data=df, x="Survived")
 
-![image](https://github.com/user-attachments/assets/987d5006-3dca-4c08-97fe-5591cd5b0cae)
+![Screenshot 2024-09-03 215615](https://github.com/user-attachments/assets/f0119e08-1df4-42f6-b1d9-94812e2e4ad1)
 
-
-df.dropna(inplace=True)
-sns.heatmap(df.isnull(),yticklabels=False,annot=True)
-
-![image](https://github.com/user-attachments/assets/9e0856f3-18b7-4cd4-84bc-3c3646f716b8)
-
-import numpy as np
-age=[1,3,28,27,25,92,30,39,40,50,26,24,29,94]
-af=pd.DataFrame(age)
-af
-
-![image](https://github.com/user-attachments/assets/ccefdfbb-09dd-41c9-b259-7ecf9590dabe)
-
-sns.boxplot(data=af)
-
-![image](https://github.com/user-attachments/assets/ef240f8c-26cd-43ce-b742-73f685728b97)
-
-sns.scatterplot(data=af)
-
-![image](https://github.com/user-attachments/assets/3011d38c-e44b-4063-82f0-f2716b1f3295)
-
-q1=af.quantile(0.25)
-q2=af.quantile(0.5)
-q3=af.quantile(0.75)
-iqr=q3-q1
-iqr
-
-![image](https://github.com/user-attachments/assets/67eaebf9-5b0e-4bb3-b7e0-46fdcd122b69)
-
-Q1=np.percentile(af,25)
-Q3=np.percentile(af,75)
-IQR=Q3-Q1
-IQR
-
-![image](https://github.com/user-attachments/assets/e6438868-3fee-474f-8a19-a0dd39adfc8d)
-
-lower_bound=Q1-1.5*IQR
-upper_bound=Q3+1.5*IQR
-
-
-
-lower_bound
-upper_bound
-
-![image](https://github.com/user-attachments/assets/8941786d-b6ef-425a-be8a-8d2c87fd673d)
-
-outliers=[x for x in age if x<lower_bound or x>upper_bound]
-print("Q1:", Q1)
-print("Q3:", Q3)
-print("IQR:", IQR)
-print("Lower bound:", lower_bound)
-print("Upper bound:", upper_bound)
-print("Outliers:", outliers)
-
-![image](https://github.com/user-attachments/assets/921d0cd9-7a03-4dd1-84b4-10d1499bd6e4)
-
-af=af[((af>=lower_bound)&(af<=upper_bound))]
-af
-
-![image](https://github.com/user-attachments/assets/2fbbe296-655b-4b1d-aec6-59fc3fced68a)
-
-af.dropna()
-
-
-![image](https://github.com/user-attachments/assets/9d0013da-c191-4ccd-8eed-f537b0934b0e)
-
-sns.boxplot(data=af)
-
-![image](https://github.com/user-attachments/assets/f82f718f-4c85-4843-9e0f-1f7f952c0793)
-
-data=[1,2,2,2,3,1,1,15,2,2,2,3,1,1,2]
-mean=np.mean(data)
-std=np.std(data)
-print("Mean of the Dataset is", mean)
-print("Std. Deviation is", std)
-
-
-threshold=3
-outlier=[]
-for i in data:
-  z=(i-mean)/std
-  if z>threshold:
-    outlier.append(i)
-print('outlier in dataset is',outlier)
-
-![image](https://github.com/user-attachments/assets/c66faa35-61ac-4a25-957e-285059636fa9)
-
-from scipy import stats
-data={'weight':[12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,
-                66,69,202,72,75,78,81,84,232,87,90,93,96,99,258]}
-df=pd.DataFrame(data)
 df
 
-![image](https://github.com/user-attachments/assets/74ba1f07-f479-47ca-b808-dd5704b67626)
+![Screenshot 2024-09-03 215656](https://github.com/user-attachments/assets/27fa1cee-ca1c-4c7d-8db6-125fa2bac13c)
 
-z=np.abs(stats.zscore(df))
-print(df[z['weight']>3])
+df.Pclass.unique()
 
-![image](https://github.com/user-attachments/assets/ec7dd224-c54f-4d9c-a72e-1e120246321b)
+![Screenshot 2024-09-03 215737](https://github.com/user-attachments/assets/4f9517d3-e7de-46fb-8016-0e2360155e04)
+
+df.rename(columns={'Sex':'Gender'},inplace=True)
+df
+
+![Screenshot 2024-09-03 215824](https://github.com/user-attachments/assets/66f847dc-7c00-4b81-ab46-fe76c9f6bf7f)
+
+sns.catplot(x='Gender',col='Survived',kind="count",data=df,height=5,aspect=.7)
+
+![Screenshot 2024-09-03 215909](https://github.com/user-attachments/assets/855144fc-2aa1-42ef-bf3d-e65e1fc5497c)
+
+sns. catplot(x='Survived', hue="Gender", data=df, kind = "count" )
+
+![Screenshot 2024-09-03 215958](https://github.com/user-attachments/assets/d573d9a2-5507-4f29-9bed-b2b4552550d2)
+
+sns. catplot(data=df, col = "Survived", x = "Gender", hue="Pclass", kind = "count")
+
+![Screenshot 2024-09-03 220042](https://github.com/user-attachments/assets/e672afa5-f1f7-446f-8ff3-099fe9807deb)
+
+df_numeric = df.select_dtypes(include=['number'])
+corr=df_numeric.corr()
+sns.heatmap(corr,annot=True)
+
+![Screenshot 2024-09-03 220119](https://github.com/user-attachments/assets/1d718dbe-e339-44d9-a364-7a7e672737cb)
+
+sns.pairplot(df)
+
+![Screenshot 2024-09-03 220213](https://github.com/user-attachments/assets/a12fd6cb-f919-4707-96ea-a0dbdb3ad128)
 
 
-val=[12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,202,72,75,78,81,84,232,87,90,93,96,99,258]
-
-out=[]
-def d_o(val):
-  ts=3
-  m=np.mean(val)
-  sd=np.std(val)
-  for i in val:
-    z=(i-m)/sd
-    if np.abs(z)>ts:
-      out.append(i)
-  return out
-
-op=d_o(val)
-
-op
-
-
-![image](https://github.com/user-attachments/assets/c85006d3-e0dc-40e7-8116-2d59eb138b6f)
-
-# Result
-Thus we have cleaned the data and removed the outliers by detection using IQR and Z-score method.
+# RESULT
+We have performed Exploratory Data Analysis on the given data set successfully.
