@@ -31,20 +31,20 @@ df
 df.shape
 ```
 ![image](https://github.com/user-attachments/assets/17c87218-971c-460c-a5d5-d466a2beaf31)
-
+```
 df.describe()
-
+```
 ![image](https://github.com/user-attachments/assets/af28ee11-1e54-4380-b02d-fb5035d841b4)
-
+```
 df.info()
-
+```
 ![image](https://github.com/user-attachments/assets/19320d44-f339-44b0-8635-dd4d644e480e)
-
+```
 df.head(4)
 df.tail(4)
 
 ![image](https://github.com/user-attachments/assets/2eb31c8b-a01f-4657-8881-7170c82c97c0)
-
+```
 df.isnull().sum()
 
 ![image](https://github.com/user-attachments/assets/d143bc6a-7b35-4180-a96a-9989cef93588)
